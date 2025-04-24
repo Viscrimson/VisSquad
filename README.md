@@ -15,15 +15,3 @@ Talk as a player or let your four “sisters” Lyra, Xyla, Ayda and Tyfa respon
 
 ---
 
-## Quick Start
-
-```bash
-git clone https://github.com/Viscrimson/VisSquad.git
-cd VisSquad
-python3.11 -m venv .venv
-# macOS/Linux:
-source .venv/bin/activate
-# Windows PowerShell:
-.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-python src/main.py
