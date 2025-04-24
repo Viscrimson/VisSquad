@@ -172,3 +172,10 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# More
+.venv/
+__pycache__/
+logs/
+audio_cache/
+config/*.ini
