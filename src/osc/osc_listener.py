@@ -2,13 +2,17 @@ from pythonosc.dispatcher import Dispatcher
 from pythonosc import osc_server
 from threading import Thread
 
-PORTS = [9000,9002,9004,9006,9100]
+# ports to listen on
+PORTS = [9000, 9002, 9004, 9006, 9100]
 
-def handle(addr,*args): print(f"[RECEIVED]{addr}{args}")
+def handle_message(address, *args):
+    print(f"[RECEIVED] {address} {args}")
 
-if __name__=='__main__':
-    for p in PORTS:
-        d = Dispatcher(); d.map('/chatbox/input', handle)
-        srv = osc_server.ThreadingOSCUDPServer(('0.0.0.0',p), d)
-        Thread(target=srv.serve_forever, daemon=True).start()
-    input('Listening... Enter to exit')
+if __name__ == '__main__':
+    for port in PORTS:
+        disp = Dispatcher()
+        disp.map('/chatbox/input', handle_message)
+        server = osc_server.ThreadingOSCUDPServer(('0.0.0.0', port), disp)
+        print(f"Listening OSC on 0.0.0.0:{port}")
+        Thread(target=server.serve_forever, daemon=True).start()
+    input("Press Enter to exit.")

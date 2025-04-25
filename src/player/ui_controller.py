@@ -1,11 +1,14 @@
-from PyQt6.QtWidgets import (
-    QWidget, QVBoxLayout, QHBoxLayout, QTextEdit, QPushButton,
-    QLabel, QComboBox, QFrame
-)
+import logging
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QTextEdit, QPushButton, QLabel, QComboBox, QFrame
 from PyQt6.QtCore import Qt
+from player.settings_manager import SettingsManager
+from typing import Any
+
+logger = logging.getLogger(__name__)
 
 class UIController(QWidget):
-    def __init__(self, settings, tts, audio_mgr, transcription):
+    """Main UI for player input, transcription and routing."""
+    def __init__(self, settings: SettingsManager, tts: Any, audio_mgr: Any, transcription: Any) -> None:
         super().__init__()
         self.settings = settings
         self.tts = tts
@@ -13,8 +16,8 @@ class UIController(QWidget):
         self.transcription = transcription
         self.init_ui()
 
-    def init_ui(self):
+    def init_ui(self) -> None:
         layout = QVBoxLayout()
-        # ... build UI per design.md
+        # TODO: build UI per design.md
         self.setLayout(layout)
         self.show()

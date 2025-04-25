@@ -1,9 +1,11 @@
-from ai.communication.whisper_client import WhisperClient
+from typing import Any
+from player.settings_manager import SettingsManager
 
-class Transcription:
-    def __init__(self, settings):
-        self.whisper = WhisperClient(settings.get('TTS', 'engine', fallback='EdgeTTS'))
+class AudioFilter:
+    """Apply voice-activity detection to audio chunks."""
+    def __init__(self, settings: SettingsManager) -> None:
+        self.settings = settings
 
-    def transcribe(self, audio_chunk):
-        # TODO: call WhisperClient.transcribe_stream
-        return ""
+    def filter_voice(self, audio_chunk: Any) -> Any:
+        """Return only voice segments."""
+        raise NotImplementedError("audio filtering not implemented yet")
